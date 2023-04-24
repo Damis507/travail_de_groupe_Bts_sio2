@@ -1,0 +1,1 @@
+<type_cours xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">\n\n<row>\n  <id>1</id>\n  <libelle>individuel</libelle>\n</row>\n\n<row>\n  <id>2</id>\n  <libelle>collectif</libelle>\n</row>\n\n</type_cours>

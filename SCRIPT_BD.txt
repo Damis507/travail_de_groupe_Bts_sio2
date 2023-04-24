@@ -1,0 +1,179 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.7
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : localhost:8889
+-- Généré le : lun. 10 oct. 2022 à 15:28
+-- Version du serveur :  5.7.32
+-- Version de PHP : 7.4.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Base de données : `ecole_musique`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `autorisation`
+--
+
+CREATE TABLE `autorisation` (
+  `id_option` int(11) NOT NULL,
+  `id_utilisateur` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `autorisation`
+--
+
+INSERT INTO `autorisation` (`id_option`, `id_utilisateur`) VALUES
+(3, '123456789098761'),
+(4, '123456789098761'),
+(5, '123456789098761'),
+(6, '123456789098761'),
+(8, '123456789098761'),
+(10, '123456789098761'),
+(11, '123456789098761'),
+(3, '123456789098765'),
+(5, '123456789098765'),
+(10, '123456789098765');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `comporte`
+--
+
+CREATE TABLE `comporte` (
+  `id_option` int(11) NOT NULL,
+  `id_option_OPTIONS` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `comporte`
+--
+
+INSERT INTO `comporte` (`id_option`, `id_option_OPTIONS`) VALUES
+(1, 3),
+(1, 4),
+(1, 5),
+(2, 6),
+(2, 7),
+(2, 8),
+(9, 10),
+(9, 11);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `OPTIONS`
+--
+
+CREATE TABLE `OPTIONS` (
+  `libelle_option` varchar(20) NOT NULL,
+  `id_option` int(11) NOT NULL,
+  `lien` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `OPTIONS`
+--
+
+INSERT INTO `OPTIONS` (`libelle_option`, `id_option`, `lien`) VALUES
+('Administration', 1, NULL),
+('Menu2', 2, NULL),
+('Ajouter utilisateur', 3, NULL),
+('Changer password', 4, NULL),
+('Option13', 5, NULL),
+('Option21', 6, NULL),
+('Option22', 7, NULL),
+('Option23', 8, NULL),
+('Menu3', 9, NULL),
+('Option31', 10, NULL),
+('Option32', 11, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `UTILISATEUR`
+--
+
+CREATE TABLE `UTILISATEUR` (
+  `id_utilisateur` varchar(15) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `tel_cel` varchar(12) DEFAULT NULL,
+  `pseudo` varchar(20) NOT NULL,
+  `mot_de_passe` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `UTILISATEUR`
+--
+
+INSERT INTO `UTILISATEUR` (`id_utilisateur`, `nom`, `prenom`, `tel_cel`, `pseudo`, `mot_de_passe`) VALUES
+('1234', 'MARTIN', 'FRANCIS', '1234', 'FRANCIS', '1234'),
+('123455678906', 'PIQUEUR', 'FRANCIS', '0690957943', 'FRANCIS', '1234'),
+('123456789098761', 'CISNEROS-BRIDON', 'FABIAN', NULL, 'FABIO', '1234'),
+('123456789098765', 'DUPONT', 'JEAN', NULL, 'TOTO', '1234');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `autorisation`
+--
+ALTER TABLE `autorisation`
+  ADD PRIMARY KEY (`id_option`,`id_utilisateur`),
+  ADD KEY `autorisation_UTILISATEUR0_FK` (`id_utilisateur`);
+
+--
+-- Index pour la table `comporte`
+--
+ALTER TABLE `comporte`
+  ADD PRIMARY KEY (`id_option`,`id_option_OPTIONS`),
+  ADD KEY `comporte_OPTIONS0_FK` (`id_option_OPTIONS`);
+
+--
+-- Index pour la table `OPTIONS`
+--
+ALTER TABLE `OPTIONS`
+  ADD PRIMARY KEY (`id_option`);
+
+--
+-- Index pour la table `UTILISATEUR`
+--
+ALTER TABLE `UTILISATEUR`
+  ADD PRIMARY KEY (`id_utilisateur`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `OPTIONS`
+--
+ALTER TABLE `OPTIONS`
+  MODIFY `id_option` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `autorisation`
+--
+ALTER TABLE `autorisation`
+  ADD CONSTRAINT `autorisation_OPTIONS_FK` FOREIGN KEY (`id_option`) REFERENCES `OPTIONS` (`id_option`),
+  ADD CONSTRAINT `autorisation_UTILISATEUR0_FK` FOREIGN KEY (`id_utilisateur`) REFERENCES `UTILISATEUR` (`id_utilisateur`);
+
+--
+-- Contraintes pour la table `comporte`
+--
+ALTER TABLE `comporte`
+  ADD CONSTRAINT `comporte_OPTIONS0_FK` FOREIGN KEY (`id_option_OPTIONS`) REFERENCES `OPTIONS` (`id_option`),
+  ADD CONSTRAINT `comporte_OPTIONS_FK` FOREIGN KEY (`id_option`) REFERENCES `OPTIONS` (`id_option`);

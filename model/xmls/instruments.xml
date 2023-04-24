@@ -1,0 +1,19 @@
+<instruments xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <row>
+        <id>1</id>
+        <intitule>FLUTE</intitule>
+    </row>
+    <row>
+        <id>2</id>
+        <intitule>VIOLON</intitule>
+    </row>
+    <row>
+        <id>3</id>
+        <intitule>TROMPETTE</intitule>
+    </row>
+    <row>
+        <id>4</id>
+        <intitule>TAMBOUR</intitule>
+    </row>
+</instruments>
+

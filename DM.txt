@@ -1,0 +1,16 @@
+BD :
+Si on veut ajouter une option au menu:
+insert into dans la table options. puis associer cette option a la rubrique (option aussi) correspondante.
+
+VIEW :
+Dans view/gestionnaire/ajouter_responsable.php
+Creer le formulaire avec les entrées nom, prenom, numero, rue, email, telephone, un buton (ces inputs doivent avoir le nom que les champs dans BD). Dans le formulaire action doit aller /controler/gestionnaire/ajouter_responsable.php. method est post.
+
+
+MODELE :
+Faire class responsable avec son constructeur et tous le getters et setters
+Dans le managergestionnaire faire une methode pour inscrire un responsable.
+
+
+CONTROLER :
+Inscrire le responsable

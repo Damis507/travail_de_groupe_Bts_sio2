@@ -28,6 +28,7 @@
 										   'mail_personnel' => $e['mail_personnel']);
 				
 				echo '<meta http-equiv="refresh" content="0;URL=../systeme/ajouter_personnel.php?option=modif.">';
+
 			}
 		}
 	}
